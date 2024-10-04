@@ -26,7 +26,7 @@ import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
 
 import iiitv from "./company/iiitv.png";
-import skepsi from "./company/skepsi.png";
+import skepsi from "./company/Skepsi.png";
 import swoc from "./company/swoc.png";
 
 import movie from "./movie.png";
