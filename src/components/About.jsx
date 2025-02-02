@@ -9,7 +9,7 @@ import { fadeIn } from "../utils/motion";
 
 const ServiceCard = ({ index, title, icon }) => {
   return (
-    <Tilt className="xs:w-[250px] w-fll">
+    <Tilt className="xs:w-[250px] w-full">
       <motion.div
         variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
         className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
@@ -38,7 +38,7 @@ const About = () => {
 
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className="mt-4 text-secondary text-[17px9 w-max-3xl leading-[30px]"
+        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
       >
         I'm a skilled software developer with experience in Java, Python, and
         C#, and expertise in frameworks like Spring Boot, ASP.NET, and React.js.
@@ -47,7 +47,8 @@ const About = () => {
         challenges. Let's work together to bring your ideas to life!
       </motion.p>
 
-      <div className="mt-20 flex flex-wrap gap-10 ">
+      {/* Cards Container */}
+      <div className="mt-20 flex flex-wrap gap-10 mx-0 px-0">
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

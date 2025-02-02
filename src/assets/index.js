@@ -29,6 +29,7 @@ import iiitv from "./company/iiitv.png";
 import skepsi from "./company/Skepsi.png";
 import swoc from "./company/swoc.png";
 
+import BookFinder from "./BookFinder.png";
 import JournalApp from "./JournalApp.png";
 import movie from "./movie.png";
 import QuizApp from "./QuizApp.jpg";
@@ -37,6 +38,7 @@ import stock from "./stock.jpg";
 import Mahipal from "./testimonial/Mahipal.jpeg";
 export {
   backend,
+  BookFinder,
   close,
   creator,
   css,

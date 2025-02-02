@@ -1,5 +1,6 @@
 import {
   backend,
+  BookFinder,
   creator,
   docker,
   figma,
@@ -220,6 +221,31 @@ const projects = [
     // live_demo_link: "https://movie-recommender-system-j87x.onrender.com/",
   },
   {
+    name: "Quiz App Backend",
+    description:
+      "A backend-only quiz application with APIs to handle quiz creation, management, scoring, and result generation providing enhanced user experience.",
+    tags: [
+      {
+        name: "Java",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "SpringBoot",
+        color: "green-text-gradient",
+      },
+      {
+        name: "PostgreSQL",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "Postman",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: QuizApp,
+    source_code_link: "https://github.com/govind516/Quiz-App/",
+  },
+  {
     name: "Movie Recommender",
     description:
       "A web-based system that delivers personalized movie recommendations using content-based filtering for an enhanced viewing experience.",
@@ -279,29 +305,30 @@ const projects = [
     source_code_link: "https://github.com/govind516/Stock-Price-Prediction/",
   },
   {
-    name: "Quiz App Backend",
+    name: "Book Finder App",
     description:
-      "A backend-only quiz application with APIs to handle quiz creation, management, scoring, and result generation providing enhanced user experience.",
+      "Allows users to search for books by title, author, and language using the Open Library API and displays search results with book covers, titles, authors, and publication details.",
     tags: [
       {
-        name: "Java",
+        name: "React",
         color: "blue-text-gradient",
       },
       {
-        name: "SpringBoot",
+        name: "Tailwind css",
         color: "green-text-gradient",
       },
       {
-        name: "PostgreSQL",
+        name: "Open API",
         color: "pink-text-gradient",
       },
       {
-        name: "Postman",
-        color: "pink-text-gradient",
+        name: "codesandbox",
+        color: "green-text-gradient",
       },
     ],
-    image: QuizApp,
-    source_code_link: "https://github.com/govind516/Quiz-App/",
+    image: BookFinder,
+    source_code_link: "https://github.com/govind516/Stock-Price-Prediction/",
+    live_demo_link: "https://43rklk-3000.csb.app/",
   },
 ];
 
