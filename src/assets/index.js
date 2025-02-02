@@ -29,14 +29,13 @@ import iiitv from "./company/iiitv.png";
 import skepsi from "./company/Skepsi.png";
 import swoc from "./company/swoc.png";
 
+import JournalApp from "./JournalApp.png";
 import movie from "./movie.png";
 import QuizApp from "./QuizApp.jpg";
 import stock from "./stock.jpg";
 
 import Mahipal from "./testimonial/Mahipal.jpeg";
 export {
-  Mahipal,
-  QuizApp,
   backend,
   close,
   creator,
@@ -49,7 +48,9 @@ export {
   iiitv,
   java,
   javascript,
+  JournalApp,
   logo,
+  Mahipal,
   menu,
   mobile,
   mongodb,
@@ -57,6 +58,7 @@ export {
   mysql,
   nodejs,
   postgresql,
+  QuizApp,
   reactjs,
   selenium,
   skepsi,

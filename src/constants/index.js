@@ -7,6 +7,7 @@ import {
   iiitv,
   java,
   javascript,
+  JournalApp,
   Mahipal,
   mobile,
   mongodb,
@@ -59,24 +60,24 @@ const services = [
     icon: mobile,
   },
   {
-    title: "Web Developer",
+    title: ".NET Developer",
     icon: web,
   },
   {
-    title: "Content Creator",
+    title: "Google Cloud Program Volunteer",
     icon: creator,
   },
 ];
 
 const technologies = [
-  // {
-  //   name: "html",
-  //   icon: html,
-  // },
-  // {
-  //   name: "css",
-  //   icon: css,
-  // },
+  {
+    name: "java",
+    icon: java,
+  },
+  {
+    name: "spring",
+    icon: spring,
+  },
   {
     name: "JavaScript",
     icon: javascript,
@@ -113,14 +114,7 @@ const technologies = [
     name: "docker",
     icon: docker,
   },
-  {
-    name: "java",
-    icon: java,
-  },
-  {
-    name: "spring",
-    icon: spring,
-  },
+
   {
     name: "mysql",
     icon: mysql,
@@ -188,10 +182,60 @@ const testimonials = [
 
 const projects = [
   {
+    name: "Journal App",
+    description:
+      "A secure journaling app with Spring Boot, Redis caching, Kafka event streaming, JWT and Google OAuth authentication with SonarQube for code quality assurance.",
+    tags: [
+      {
+        name: "Java",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Spring Boot",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Redis",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "Kafka",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Google OAuth",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "SonarQube",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Swagger",
+        color: "green-text-gradient",
+      },
+    ],
+    image: JournalApp,
+    source_code_link: "https://github.com/govind516/journalApp",
+    // live_demo_link: "https://movie-recommender-system-j87x.onrender.com/",
+  },
+  {
     name: "Movie Recommender",
     description:
-      "Web-based platform that provides personalized movie recommendations using content-based algorithms for a personalized experience.",
+      "A web-based system that delivers personalized movie recommendations using content-based filtering for an enhanced viewing experience.",
     tags: [
+      {
+        name: "Machine Learning",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "jupiter notebook",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Kaggle",
+        color: "pink-text-gradient",
+      },
       {
         name: "Scikit-Learn",
         color: "blue-text-gradient",
@@ -199,10 +243,6 @@ const projects = [
       {
         name: "Streamlit",
         color: "green-text-gradient",
-      },
-      {
-        name: "Kaggle",
-        color: "pink-text-gradient",
       },
     ],
     image: movie,
@@ -212,11 +252,19 @@ const projects = [
   {
     name: "Stock Price Prediction",
     description:
-      "Python notebook application that employs machine learning algorithms to predict stock prices, helping users make informed investment decisions.",
+      "A machine learning model that combines KNN and LSTM algorithms to analyze historical data, predict stock prices, and help users make informed investment decisions.",
     tags: [
       {
-        name: "Python",
+        name: "Machine Learning",
         color: "blue-text-gradient",
+      },
+      {
+        name: "jupiter notebook",
+        color: "green-text-gradient",
+      },
+      {
+        name: "Python",
+        color: "pink-text-gradient",
       },
       {
         name: "Scikit-Learn",
@@ -245,6 +293,10 @@ const projects = [
       },
       {
         name: "PostgreSQL",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "Postman",
         color: "pink-text-gradient",
       },
     ],
