@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Meeting-to-Action Copilot project visual</title>
+  <desc id="desc">Transcript data flowing through a Spring API into action items.</desc>
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#b8ff5c"/><stop offset=".55" stop-color="#4fd1c5"/><stop offset="1" stop-color="#7aa2ff"/></linearGradient></defs>
+  <rect width="960" height="600" rx="44" fill="#090b0f"/>
+  <path d="M0 0h960v600H0z" fill="url(#g)" opacity=".08"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".08"><path d="M80 90h800M80 220h800M80 350h800M80 480h800"/><path d="M160 48v504M480 48v504M800 48v504"/></g>
+  <rect x="78" y="102" width="248" height="330" rx="22" fill="#f6f3eb" fill-opacity=".08" stroke="#fff" stroke-opacity=".14"/>
+  <rect x="356" y="176" width="248" height="214" rx="22" fill="#f6f3eb" fill-opacity=".08" stroke="#b8ff5c" stroke-opacity=".45"/>
+  <rect x="634" y="102" width="248" height="330" rx="22" fill="#f6f3eb" fill-opacity=".08" stroke="#fff" stroke-opacity=".14"/>
+  <path d="M326 270h30M604 270h30" stroke="url(#g)" stroke-width="8" stroke-linecap="round"/>
+  <text x="112" y="158" fill="#b8ff5c" font-family="Arial" font-size="24" font-weight="800">TRANSCRIPT</text>
+  <text x="390" y="232" fill="#b8ff5c" font-family="Arial" font-size="24" font-weight="800">SPRING API</text>
+  <text x="668" y="158" fill="#b8ff5c" font-family="Arial" font-size="24" font-weight="800">ACTION ITEMS</text>
+  <text x="112" y="240" fill="#f6f3eb" font-family="Arial" font-size="38" font-weight="800">Meeting</text>
+  <text x="390" y="310" fill="#f6f3eb" font-family="Arial" font-size="38" font-weight="800">Copilot</text>
+  <text x="668" y="240" fill="#f6f3eb" font-family="Arial" font-size="38" font-weight="800">Tasks</text>
+</svg>

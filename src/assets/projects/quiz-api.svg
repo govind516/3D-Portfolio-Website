@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Quiz App Backend visual</title>
+  <desc id="desc">Quiz backend API with PostgreSQL and scoring workflow.</desc>
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#b8ff5c"/><stop offset="1" stop-color="#7aa2ff"/></linearGradient></defs>
+  <rect width="960" height="600" rx="44" fill="#090b0f"/>
+  <rect x="90" y="88" width="780" height="424" rx="30" fill="#f6f3eb" fill-opacity=".07" stroke="#fff" stroke-opacity=".12"/>
+  <text x="132" y="162" fill="#b8ff5c" font-family="Arial" font-size="24" font-weight="800">REST API / POSTGRESQL / SCORE ENGINE</text>
+  <g fill="#f6f3eb" font-family="Arial" font-weight="800">
+    <text x="132" y="250" font-size="52">Quiz App Backend</text>
+    <text x="132" y="334" font-size="28" opacity=".76">create quiz -> submit answers -> calculate result</text>
+  </g>
+  <path d="M132 398h696" stroke="url(#g)" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="194" cy="398" r="24" fill="#b8ff5c"/><circle cx="480" cy="398" r="24" fill="#4fd1c5"/><circle cx="766" cy="398" r="24" fill="#7aa2ff"/>
+</svg>

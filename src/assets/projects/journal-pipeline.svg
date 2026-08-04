@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Journal App architecture visual</title>
+  <desc id="desc">Event-driven journal backend with MongoDB, Kafka, Redis, OAuth and JWT.</desc>
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#7aa2ff"/><stop offset=".5" stop-color="#4fd1c5"/><stop offset="1" stop-color="#b8ff5c"/></linearGradient></defs>
+  <rect width="960" height="600" rx="44" fill="#080a0f"/>
+  <circle cx="480" cy="300" r="210" fill="none" stroke="#fff" stroke-opacity=".08"/>
+  <circle cx="480" cy="300" r="128" fill="none" stroke="url(#g)" stroke-width="6" stroke-opacity=".8"/>
+  <g font-family="Arial" font-weight="800">
+    <rect x="358" y="236" width="244" height="128" rx="24" fill="#f6f3eb" fill-opacity=".09" stroke="#b8ff5c" stroke-opacity=".45"/>
+    <text x="403" y="312" fill="#f6f3eb" font-size="38">Spring Boot</text>
+    <text x="120" y="168" fill="#b8ff5c" font-size="28">OAuth + JWT</text>
+    <text x="694" y="168" fill="#7aa2ff" font-size="28">MongoDB</text>
+    <text x="128" y="454" fill="#4fd1c5" font-size="28">Redis</text>
+    <text x="700" y="454" fill="#b8ff5c" font-size="28">Kafka</text>
+  </g>
+  <path d="M270 190l88 62M690 190l-88 62M274 422l84-58M686 422l-84-58" stroke="url(#g)" stroke-width="7" stroke-linecap="round"/>
+</svg>

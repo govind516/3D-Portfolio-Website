@@ -1,147 +1,66 @@
 import {
   backend,
-  BookFinder,
+  bookFinderVisual,
   creator,
-  docker,
-  figma,
-  git,
+  infosys,
   iiitv,
-  java,
-  javascript,
-  JournalApp,
+  journalPipelineVisual,
   Mahipal,
+  meetingCopilotVisual,
   mobile,
-  mongodb,
-  movie,
-  mysql,
-  nodejs,
-  postgresql,
-  QuizApp,
-  reactjs,
-  selenium,
+  movieRecommenderVisual,
+  quizApiVisual,
   skepsi,
-  spring,
-  stock,
+  stockForecastVisual,
   swoc,
-  tailwind,
-  threejs,
   web,
 } from "../assets";
 
-export const navLinks = [
-  {
-    id: "about",
-    title: "About",
-  },
-  {
-    id: "work",
-    title: "Work",
-  },
-  {
-    id: "project",
-    title: "Project",
-  },
-  {
-    id: "contact",
-    title: "Contact",
-  },
-  {
-    id: "follow",
-    title: "Follow Me",
-  },
-];
-
 const services = [
   {
-    title: "Backend Developer",
+    title: "Data Engineer",
     icon: backend,
   },
   {
-    title: "Spring Boot Developer",
+    title: "Databricks & Spark Developer",
     icon: mobile,
   },
   {
-    title: ".NET Developer",
+    title: "ETL Pipeline Engineer",
     icon: web,
   },
   {
-    title: "Google Cloud Program Volunteer",
+    title: "Cloud Data Practitioner",
     icon: creator,
-  },
-];
-
-const technologies = [
-  {
-    name: "java",
-    icon: java,
-  },
-  {
-    name: "spring",
-    icon: spring,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
-    name: "Node JS",
-    icon: nodejs,
-  },
-  {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "figma",
-    icon: figma,
-  },
-  {
-    name: "docker",
-    icon: docker,
-  },
-
-  {
-    name: "mysql",
-    icon: mysql,
-  },
-  {
-    name: "postgresql",
-    icon: postgresql,
-  },
-  {
-    name: "selenium",
-    icon: selenium,
   },
 ];
 
 const experiences = [
   {
+    title: "Specialist Programmer",
+    company_name: "Infosys",
+    icon: infosys,
+    iconBg: "#fff",
+    date: "June 2025 - Present",
+    points: [
+      "Designed and maintained Databricks Spark SQL data pipelines, building datamarts and catalog blocks from client business requirements.",
+      "Engineered reusable asset bundles with explicit schema definitions and dependency management for modular, maintainable data services.",
+      "Implemented multi-table join logic, aliasing, and data matching rules in PySpark with automated quality checks for nulls, duplicates, and constraints.",
+      "Tech Stack: Python, PySpark, Spark SQL, Databricks, Azure, MongoDB, Kafka, Redis, Linux",
+    ],
+    image: infosys,
+  },
+  {
     title: "SDE Intern",
     company_name: "Skespi.ai",
     icon: skepsi,
     iconBg: "#fff",
-    date: "June 2024 - August 2024",
+    date: "June 2024 - September 2024",
     points: [
       "Automated over 300 test cases across 6 hospitality companies, achieving a 98% pass rate and ensuring high software reliability",
       "Developed and deployed functionalities to extract OCR data from government IDs, improving user verification accuracy by 95%",
       "Participated in code reviews and contributed to improving code quality, leading to a 10% reduction in post-release bugs.",
-      "Tech Stack: C#, ASP.NET, MySQL, Azure, Selenium",
+      "Tech Stack: C#, MySQL, Azure, Selenium, NUnit/XUnit",
     ],
   },
   {
@@ -183,6 +102,35 @@ const testimonials = [
 
 const projects = [
   {
+    name: "Meeting-to-Action Copilot",
+    description:
+      "An AI-powered backend service that converts meeting transcripts into summaries, action items, and follow-ups through modular Spring Boot REST APIs, Dockerized services, and SonarQube quality gates.",
+    tags: [
+      {
+        name: "Spring Boot",
+        color: "green-text-gradient",
+      },
+      {
+        name: "REST APIs",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "Docker",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "SonarQube",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "React",
+        color: "green-text-gradient",
+      },
+    ],
+    source_code_link: "https://github.com/Govind516",
+    image: meetingCopilotVisual,
+  },
+  {
     name: "Journal App",
     description:
       "A secure journaling app with Spring Boot, Redis caching, Kafka event streaming, JWT and Google OAuth authentication with SonarQube for code quality assurance.",
@@ -216,8 +164,8 @@ const projects = [
         color: "green-text-gradient",
       },
     ],
-    image: JournalApp,
     source_code_link: "https://github.com/govind516/journalApp",
+    image: journalPipelineVisual,
     // live_demo_link: "https://movie-recommender-system-j87x.onrender.com/",
   },
   {
@@ -242,8 +190,8 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: QuizApp,
     source_code_link: "https://github.com/govind516/Quiz-App/",
+    image: quizApiVisual,
   },
   {
     name: "Movie Recommender",
@@ -271,9 +219,9 @@ const projects = [
         color: "green-text-gradient",
       },
     ],
-    image: movie,
     source_code_link: "https://github.com/govind516/movie-recommender-system/",
     live_demo_link: "https://movie-recommender-system-j87x.onrender.com/",
+    image: movieRecommenderVisual,
   },
   {
     name: "Stock Price Prediction",
@@ -301,8 +249,8 @@ const projects = [
         color: "pink-text-gradient",
       },
     ],
-    image: stock,
     source_code_link: "https://github.com/govind516/Stock-Price-Prediction/",
+    image: stockForecastVisual,
   },
   {
     name: "Book Finder App",
@@ -326,10 +274,10 @@ const projects = [
         color: "green-text-gradient",
       },
     ],
-    image: BookFinder,
     source_code_link: "https://github.com/govind516/Stock-Price-Prediction/",
     live_demo_link: "https://43rklk-3000.csb.app/",
+    image: bookFinderVisual,
   },
 ];
 
-export { experiences, projects, services, technologies, testimonials };
+export { experiences, projects, services, testimonials };

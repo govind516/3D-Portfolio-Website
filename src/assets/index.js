@@ -1,73 +1,35 @@
 import backend from "./backend.png";
-import close from "./close.svg";
 import creator from "./creator.png";
-import github from "./github.png";
-import logo from "./logo.png";
-import menu from "./menu.svg";
 import mobile from "./mobile.png";
 import web from "./web.png";
 
-import css from "./tech/css.png";
-import docker from "./tech/docker.png";
-import figma from "./tech/figma.png";
-import git from "./tech/git.png";
-import html from "./tech/html.png";
-import java from "./tech/java.svg";
-import mysql from "./tech/mysql.svg";
-import postgresql from "./tech/postgresql.svg";
-import selenium from "./tech/selenium.svg";
-import spring from "./tech/spring.svg";
-
-import javascript from "./tech/javascript.png";
-import mongodb from "./tech/mongodb.png";
-import nodejs from "./tech/nodejs.png";
-import reactjs from "./tech/reactjs.png";
-import tailwind from "./tech/tailwind.png";
-import threejs from "./tech/threejs.svg";
-
+import infosys from "./company/infosys.svg";
 import iiitv from "./company/iiitv.png";
 import skepsi from "./company/Skepsi.png";
 import swoc from "./company/swoc.png";
 
-import BookFinder from "./BookFinder.png";
-import JournalApp from "./JournalApp.png";
-import movie from "./movie.png";
-import QuizApp from "./QuizApp.jpg";
-import stock from "./stock.jpg";
+import bookFinderVisual from "./projects/book-finder.svg";
+import journalPipelineVisual from "./projects/journal-pipeline.svg";
+import meetingCopilotVisual from "./projects/meeting-copilot.svg";
+import movieRecommenderVisual from "./projects/movie-recommender.svg";
+import quizApiVisual from "./projects/quiz-api.svg";
+import stockForecastVisual from "./projects/stock-forecast.svg";
 
 import Mahipal from "./testimonial/Mahipal.jpeg";
 export {
   backend,
-  BookFinder,
-  close,
+  bookFinderVisual,
   creator,
-  css,
-  docker,
-  figma,
-  git,
-  github,
-  html,
+  infosys,
   iiitv,
-  java,
-  javascript,
-  JournalApp,
-  logo,
+  journalPipelineVisual,
   Mahipal,
-  menu,
+  meetingCopilotVisual,
   mobile,
-  mongodb,
-  movie,
-  mysql,
-  nodejs,
-  postgresql,
-  QuizApp,
-  reactjs,
-  selenium,
+  movieRecommenderVisual,
+  quizApiVisual,
   skepsi,
-  spring,
-  stock,
+  stockForecastVisual,
   swoc,
-  tailwind,
-  threejs,
   web,
 };

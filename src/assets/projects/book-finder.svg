@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Book Finder visual</title>
+  <desc id="desc">Open Library search interface visual.</desc>
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#7aa2ff"/><stop offset="1" stop-color="#b8ff5c"/></linearGradient></defs>
+  <rect width="960" height="600" rx="44" fill="#090b0f"/>
+  <rect x="104" y="96" width="752" height="96" rx="48" fill="#f6f3eb" fill-opacity=".1" stroke="#fff" stroke-opacity=".14"/>
+  <circle cx="790" cy="144" r="26" fill="none" stroke="url(#g)" stroke-width="8"/>
+  <path d="M810 164l32 32" stroke="url(#g)" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#f6f3eb" fill-opacity=".1">
+    <rect x="112" y="260" width="154" height="206" rx="18"/><rect x="306" y="240" width="154" height="226" rx="18"/><rect x="500" y="280" width="154" height="186" rx="18"/><rect x="694" y="230" width="154" height="236" rx="18"/>
+  </g>
+  <text x="136" y="156" fill="#f6f3eb" font-family="Arial" font-size="34" font-weight="800">Search books by title, author, language</text>
+  <text x="104" y="538" fill="#b8ff5c" font-family="Arial" font-size="24" font-weight="800">REACT / OPEN LIBRARY API / TAILWIND</text>
+</svg>

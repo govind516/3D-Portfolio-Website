@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Movie Recommender visual</title>
+  <desc id="desc">Content-based recommendation engine visual.</desc>
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#ff6b3d"/><stop offset=".55" stop-color="#4fd1c5"/><stop offset="1" stop-color="#7aa2ff"/></linearGradient></defs>
+  <rect width="960" height="600" rx="44" fill="#090b0f"/>
+  <g transform="translate(104 96)">
+    <rect width="170" height="252" rx="18" fill="#f6f3eb" fill-opacity=".11"/>
+    <rect x="194" y="46" width="170" height="252" rx="18" fill="#f6f3eb" fill-opacity=".15"/>
+    <rect x="388" y="0" width="170" height="252" rx="18" fill="#f6f3eb" fill-opacity=".11"/>
+    <rect x="582" y="66" width="170" height="252" rx="18" fill="#f6f3eb" fill-opacity=".13"/>
+  </g>
+  <path d="M128 432c160-90 290-90 452 0s222 62 278 20" fill="none" stroke="url(#g)" stroke-width="9" stroke-linecap="round"/>
+  <text x="104" y="506" fill="#f6f3eb" font-family="Arial" font-size="52" font-weight="800">Movie Recommender</text>
+  <text x="104" y="548" fill="#b8ff5c" font-family="Arial" font-size="24" font-weight="800">PANDAS / SCIKIT-LEARN / STREAMLIT</text>
+</svg>
