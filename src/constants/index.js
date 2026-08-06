@@ -48,7 +48,6 @@ const experiences = [
       "Implemented multi-table join logic, aliasing, and data matching rules in PySpark with automated quality checks for nulls, duplicates, and constraints.",
       "Tech Stack: Python, PySpark, Spark SQL, Databricks, Azure, MongoDB, Kafka, Redis, Linux",
     ],
-    image: infosys,
   },
   {
     title: "SDE Intern",

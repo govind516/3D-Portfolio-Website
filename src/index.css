@@ -632,7 +632,9 @@ body {
 .project-diagram {
   position: absolute;
   inset: 12px;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
   gap: 8px;
   border-radius: 6px;
   background:
@@ -641,6 +643,9 @@ body {
   padding: 14px;
   opacity: 0;
   transition: opacity 220ms ease;
+  overflow: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .project-diagram::before {
@@ -660,6 +665,7 @@ body {
   display: inline-flex;
   width: fit-content;
   max-width: 100%;
+  min-width: 0;
   align-items: center;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -669,6 +675,8 @@ body {
   font-size: 11px;
   font-weight: 900;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .project-diagram span:nth-child(2) {
@@ -849,7 +857,11 @@ body {
   border-radius: 50%;
   background: var(--ink);
   object-fit: contain;
-  padding: 8px;
+  object-position: center;
+  padding: 14px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 0 2px var(--line);
 }
 
 .experience-visual {

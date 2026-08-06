@@ -265,13 +265,6 @@ const CinematicPortfolio = () => {
                 className="project-visual"
               >
                 <img src={project.image} alt={`${project.name} visual`} loading="lazy" />
-                <div className="project-diagram" aria-hidden="true">
-                  {(projectArchitectures[index] || ["Input", "Logic", "Output"]).map(
-                    (step) => (
-                      <span key={`${project.name}-${step}`}>{step}</span>
-                    )
-                  )}
-                </div>
               </a>
               <div className="project-meta">
                 <span>{String(index + 1).padStart(2, "0")}</span>
@@ -352,11 +345,11 @@ const CinematicPortfolio = () => {
                 <div>
                   <img src={experience.icon} alt="" loading="lazy" />
                 </div>
-                {experience.image ? (
+                {experience.image && (
                   <div className="experience-visual" aria-hidden="true">
-                    <img src={experience.image} alt="" loading="lazy" />
+                    <img src={experience.image} alt={experience.company_name} loading="lazy" />
                   </div>
-                ) : null}
+                )}
                 <div>
                   <span>{experience.date}</span>
                   <h3>{experience.title}</h3>
