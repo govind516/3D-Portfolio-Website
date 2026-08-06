@@ -54,15 +54,6 @@ const projectTypes = [
   "Open Library search app",
 ];
 
-const projectArchitectures = [
-  ["Transcript", "Spring API", "Action items"],
-  ["MongoDB", "Kafka", "Redis"],
-  ["REST API", "PostgreSQL", "Score engine"],
-  ["Pandas", "Scikit-Learn", "Streamlit"],
-  ["Market data", "KNN + LSTM", "Forecast"],
-  ["Open Library", "React search", "Book cards"],
-];
-
 const dataStack = [
   "Databricks",
   "Spark SQL",
