@@ -367,7 +367,11 @@ const CinematicPortfolio = () => {
                   {String(index + 1).padStart(2, "0")}
                 </div>
                 <div className="timeline-icon">
-                  <img src={experience.icon} alt="" loading="lazy" />
+                  <img
+                    src={experience.icon}
+                    alt={`${experience.company_name} logo`}
+                    loading="lazy"
+                  />
                 </div>
                 <div className="timeline-main">
                   <div className="timeline-date">{experience.date}</div>
@@ -414,7 +418,7 @@ const CinematicPortfolio = () => {
               >
                 <img
                   src={project.image}
-                  alt={`${project.name} visual`}
+                  alt={project.imageAlt}
                   loading="lazy"
                 />
               </a>

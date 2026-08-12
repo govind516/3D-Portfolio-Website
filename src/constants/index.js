@@ -80,6 +80,8 @@ const projects = [
     ],
     source_code_link: "https://github.com/govind516/meeting-to-action-copilot/", 
     image: meetingCopilotVisual,
+    imageAlt:
+      "Screenshot of the Meeting-to-Action Copilot app showing a meeting summary and generated action items",
   },
   {
     name: "Journal App",
@@ -113,6 +115,8 @@ const projects = [
     ],
     source_code_link: "https://github.com/govind516/journal-pipeline/",
     image: journalPipelineVisual,
+    imageAlt:
+      "Screenshot of the Journal App writing interface with a list of journal entries",
 
   },
   {
@@ -137,6 +141,8 @@ const projects = [
     ],
     source_code_link: "https://github.com/govind516/Quiz-App/",
     image: quizApiVisual,
+    imageAlt:
+      "Screenshot of the Quiz API platform showing quiz creation and result generation endpoints",
   },
   {
     name: "Movie Recommender",
@@ -164,6 +170,8 @@ const projects = [
     source_code_link: "https://github.com/govind516/movie-recommender-system/",
     live_demo_link: "https://movie-recommender-system-j87x.onrender.com/",
     image: movieRecommenderVisual,
+    imageAlt:
+      "Screenshot of the Movie Recommender showing personalized movie recommendations based on content-based filtering",
   },
   {
     name: "Stock Price Prediction",
@@ -190,6 +198,8 @@ const projects = [
     ],
     source_code_link: "https://github.com/govind516/Book-Finder-App/",
     image: stockForecastVisual,
+    imageAlt:
+      "Screenshot of the Stock Price Prediction tool charting historical data alongside predicted stock prices",
   },
   {
     name: "Book Finder App",
@@ -212,6 +222,8 @@ const projects = [
     source_code_link: "https://github.com/govind516/Book-Finder-App/",
     live_demo_link: "https://43rklk-3000.csb.app/",
     image: bookFinderVisual,
+    imageAlt:
+      "Screenshot of the Book Finder App displaying book search results with cover images and publication details",
   },
 ];
 
