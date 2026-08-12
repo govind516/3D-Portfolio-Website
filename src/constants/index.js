@@ -1,39 +1,16 @@
 import {
-  backend,
   bookFinderVisual,
-  creator,
   infosys,
   iiitv,
   journalPipelineVisual,
-  Mahipal,
   meetingCopilotVisual,
-  mobile,
   movieRecommenderVisual,
   quizApiVisual,
   skepsi,
   stockForecastVisual,
-  swoc,
-  web,
+  swoc
 } from "../assets";
 
-const services = [
-  {
-    title: "Data Engineer",
-    icon: backend,
-  },
-  {
-    title: "Databricks & Spark Developer",
-    icon: mobile,
-  },
-  {
-    title: "ETL Pipeline Engineer",
-    icon: web,
-  },
-  {
-    title: "Cloud Data Practitioner",
-    icon: creator,
-  },
-];
 
 const experiences = [
   {
@@ -51,7 +28,7 @@ const experiences = [
   },
   {
     title: "SDE Intern",
-    company_name: "Skespi.ai",
+    company_name: "Skepsi.ai",
     icon: skepsi,
     iconBg: "#fff",
     date: "June 2024 - September 2024",
@@ -79,7 +56,7 @@ const experiences = [
     company_name: "Social Winter of Code",
     icon: swoc,
     iconBg: "#fff",
-    date: "January 2024 - Feburary 2024",
+    date: "January 2024 - February 2024",
     points: [
       "Enhanced the functionalities of the company's website, leading to improved user experience and performance.",
       "Developed and managed new services within the user web application, increasing its capabilities and efficiency.",
@@ -88,16 +65,6 @@ const experiences = [
   },
 ];
 
-const testimonials = [
-  {
-    testimonial:
-      "Govind Gupta has been an excellent addition to our team during his internship.",
-    name: "Mahipal Rajpurohit",
-    designation: "VP",
-    company: "Skepsi.ai",
-    image: Mahipal,
-  },
-];
 
 const projects = [
   {
@@ -105,28 +72,13 @@ const projects = [
     description:
       "An AI-powered backend service that converts meeting transcripts into summaries, action items, and follow-ups through modular Spring Boot REST APIs, Dockerized services, and SonarQube quality gates.",
     tags: [
-      {
-        name: "Spring Boot",
-        color: "green-text-gradient",
-      },
-      {
-        name: "REST APIs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "Docker",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "SonarQube",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "React",
-        color: "green-text-gradient",
-      },
+      { name: "Spring Boot" },
+      { name: "REST APIs" },
+      { name: "Docker" },
+      { name: "SonarQube" },
+      { name: "React" },
     ],
-    source_code_link: "https://github.com/Govind516",
+    source_code_link: "https://github.com/govind516/meeting-to-action-copilot/", 
     image: meetingCopilotVisual,
   },
   {
@@ -136,36 +88,32 @@ const projects = [
     tags: [
       {
         name: "Java",
-        color: "blue-text-gradient",
+        
       },
       {
         name: "Spring Boot",
-        color: "green-text-gradient",
+        
       },
       {
-        name: "Redis",
-        color: "pink-text-gradient",
+        name: "Redis"
       },
       {
-        name: "Kafka",
-        color: "blue-text-gradient",
+        name: "Kafka"
       },
       {
-        name: "Google OAuth",
-        color: "pink-text-gradient",
+        name: "Google OAuth"
       },
       {
         name: "SonarQube",
-        color: "blue-text-gradient",
+        
       },
       {
-        name: "Swagger",
-        color: "green-text-gradient",
+        name: "Swagger"
       },
     ],
-    source_code_link: "https://github.com/govind516/journalApp",
+    source_code_link: "https://github.com/govind516/journal-pipeline/",
     image: journalPipelineVisual,
-    // live_demo_link: "https://movie-recommender-system-j87x.onrender.com/",
+
   },
   {
     name: "Quiz App Backend",
@@ -174,19 +122,17 @@ const projects = [
     tags: [
       {
         name: "Java",
-        color: "blue-text-gradient",
+        
       },
       {
-        name: "SpringBoot",
-        color: "green-text-gradient",
+        name: "Spring Boot",
+        
       },
       {
-        name: "PostgreSQL",
-        color: "pink-text-gradient",
+        name: "PostgreSQL"
       },
       {
-        name: "Postman",
-        color: "pink-text-gradient",
+        name: "Postman"
       },
     ],
     source_code_link: "https://github.com/govind516/Quiz-App/",
@@ -199,23 +145,20 @@ const projects = [
     tags: [
       {
         name: "Machine Learning",
-        color: "blue-text-gradient",
+        
       },
       {
-        name: "jupiter notebook",
-        color: "green-text-gradient",
+        name: "Jupyter Notebook",
+        
       },
       {
-        name: "Kaggle",
-        color: "pink-text-gradient",
+        name: "Kaggle"
       },
       {
-        name: "Scikit-Learn",
-        color: "blue-text-gradient",
+        name: "Scikit-Learn"
       },
       {
-        name: "Streamlit",
-        color: "green-text-gradient",
+        name: "Streamlit"
       },
     ],
     source_code_link: "https://github.com/govind516/movie-recommender-system/",
@@ -229,26 +172,23 @@ const projects = [
     tags: [
       {
         name: "Machine Learning",
-        color: "blue-text-gradient",
+        
       },
       {
-        name: "jupiter notebook",
-        color: "green-text-gradient",
+        name: "Jupyter Notebook",
+        
       },
       {
-        name: "Python",
-        color: "pink-text-gradient",
+        name: "Python"
       },
       {
-        name: "Scikit-Learn",
-        color: "green-text-gradient",
+        name: "Scikit-Learn"
       },
       {
-        name: "TensorFlow",
-        color: "pink-text-gradient",
+        name: "TensorFlow"
       },
     ],
-    source_code_link: "https://github.com/govind516/Stock-Price-Prediction/",
+    source_code_link: "https://github.com/govind516/Book-Finder-App/",
     image: stockForecastVisual,
   },
   {
@@ -257,26 +197,23 @@ const projects = [
       "Allows users to search for books by title, author, and language using the Open Library API and displays search results with book covers, titles, authors, and publication details.",
     tags: [
       {
-        name: "React",
-        color: "blue-text-gradient",
+        name: "React"
       },
       {
-        name: "Tailwind css",
-        color: "green-text-gradient",
+        name: "Tailwind CSS"
       },
       {
-        name: "Open API",
-        color: "pink-text-gradient",
+        name: "Open API"
       },
       {
-        name: "codesandbox",
-        color: "green-text-gradient",
+        name: "CodeSandbox"
       },
     ],
-    source_code_link: "https://github.com/govind516/Stock-Price-Prediction/",
+    source_code_link: "https://github.com/govind516/Book-Finder-App/",
     live_demo_link: "https://43rklk-3000.csb.app/",
     image: bookFinderVisual,
   },
 ];
 
-export { experiences, projects, services, testimonials };
+export { experiences, projects };
+

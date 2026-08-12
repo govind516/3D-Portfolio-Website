@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Movie Recommender App UI">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fcfbf8"/>
+      <stop offset="1" stop-color="#e9e6df"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect x="0" y="0" width="800" height="42" fill="#111"/>
+  <circle cx="24" cy="21" r="6" fill="#ff5f57"/>
+  <circle cx="46" cy="21" r="6" fill="#febc2e"/>
+  <circle cx="68" cy="21" r="6" fill="#28c840"/>
+  <text x="90" y="27" fill="#ddd" font-family="monospace" font-size="13">movie-recommender.streamlit.app</text>
+  <rect x="620" y="10" width="150" height="22" rx="11" fill="#333"/>
+  <text x="695" y="26" fill="#aaa" font-family="monospace" font-size="11" text-anchor="middle">localhost</text>
+  <rect x="0" y="42" width="200" height="458" fill="#f0eef1" stroke="#ddd"/>
+  <rect x="18" y="70" width="90" height="20" rx="4" fill="#111"/>
+  <text x="63" y="85" fill="#fff" font-family="sans-serif" font-size="12" text-anchor="middle" font-weight="bold">Movie Lens</text>
+  <text x="20" y="115" fill="#333" font-family="sans-serif" font-size="13" font-weight="bold">Select a movie</text>
+  <rect x="18" y="130" width="164" height="34" rx="6" fill="#fff" stroke="#ccc"/>
+  <text x="30" y="152" fill="#444" font-family="sans-serif" font-size="12">Harry Potter 1</text>
+  <polygon points="170,147 178,147 174,155" fill="#888"/>
+  <text x="20" y="195" fill="#333" font-family="sans-serif" font-size="13" font-weight="bold">Number of results</text>
+  <rect x="18" y="210" width="164" height="34" rx="6" fill="#fff" stroke="#ccc"/>
+  <text x="30" y="232" fill="#444" font-family="sans-serif" font-size="12">10</text>
+  <polygon points="170,227 178,227 174,235" fill="#888"/>
+  <rect x="18" y="260" width="164" height="36" rx="6" fill="#e74c3c"/>
+  <text x="100" y="283" fill="#fff" font-family="sans-serif" font-size="13" text-anchor="middle" font-weight="bold">Recommend</text>
+  <line x1="20" y1="330" x2="180" y2="330" stroke="#ddd"/>
+  <text x="20" y="355" fill="#999" font-family="sans-serif" font-size="11">Built with Streamlit</text>
+  <text x="20" y="373" fill="#999" font-family="sans-serif" font-size="11">Content-based filtering</text>
+  <text x="230" y="85" fill="#e74c3c" font-family="sans-serif" font-size="24" font-weight="bold">Movies similar to your pick</text>
+  <line x1="230" y1="100" x2="770" y2="100" stroke="#e74c3c" stroke-width="3"/>
+  <g transform="translate(230, 120)">
+    <rect width="150" height="210" rx="6" fill="#fff" stroke="#ddd"/>
+    <rect x="8" y="8" width="134" height="150" rx="4" fill="#8e44ad"/>
+    <text x="75" y="90" fill="#fff" font-family="sans-serif" font-size="34" text-anchor="middle">J</text>
+    <text x="75" y="192" fill="#222" font-family="sans-serif" font-size="12" text-anchor="middle" font-weight="bold">Now You See Me</text>
+  </g>
+  <g transform="translate(390, 120)">
+    <rect width="150" height="210" rx="6" fill="#fff" stroke="#ddd"/>
+    <rect x="8" y="8" width="134" height="150" rx="4" fill="#2980b9"/>
+    <text x="75" y="90" fill="#fff" font-family="sans-serif" font-size="34" text-anchor="middle">S</text>
+    <text x="75" y="192" fill="#222" font-family="sans-serif" font-size="12" text-anchor="middle" font-weight="bold">Interstellar</text>
+  </g>
+  <g transform="translate(550, 120)">
+    <rect width="150" height="210" rx="6" fill="#fff" stroke="#ddd"/>
+    <rect x="8" y="8" width="134" height="150" rx="4" fill="#27ae60"/>
+    <text x="75" y="90" fill="#fff" font-family="sans-serif" font-size="34" text-anchor="middle">R</text>
+    <text x="75" y="192" fill="#222" font-family="sans-serif" font-size="12" text-anchor="middle" font-weight="bold">The Martian</text>
+  </g>
+  <g transform="translate(710, 120)">
+    <rect width="150" height="210" rx="6" fill="#fff" stroke="#ddd"/>
+    <rect x="8" y="8" width="134" height="150" rx="4" fill="#c0392b"/>
+    <text x="75" y="90" fill="#fff" font-family="sans-serif" font-size="34" text-anchor="middle">B</text>
+    <text x="75" y="192" fill="#222" font-family="sans-serif" font-size="12" text-anchor="middle" font-weight="bold">A Dog's Way Home</text>
+  </g>
+  <text x="230" y="360" fill="#333" font-family="sans-serif" font-size="14" font-weight="bold">You might also like...</text>
+  <line x1="230" y1="372" x2="770" y2="372" stroke="#ddd"/>
+  <g transform="translate(230, 390)">
+    <rect width="150" height="70" rx="6" fill="#fff" stroke="#ddd"/>
+    <text x="75" y="42" fill="#8e44ad" font-family="sans-serif" font-size="26" text-anchor="middle">J</text>
+  </g>
+  <g transform="translate(390, 390)">
+    <rect width="150" height="70" rx="6" fill="#fff" stroke="#ddd"/>
+    <text x="75" y="42" fill="#2980b9" font-family="sans-serif" font-size="26" text-anchor="middle">S</text>
+  </g>
+  <g transform="translate(550, 390)">
+    <rect width="150" height="70" rx="6" fill="#fff" stroke="#ddd"/>
+    <text x="75" y="42" fill="#27ae60" font-family="sans-serif" font-size="26" text-anchor="middle">R</text>
+  </g>
+  <g transform="translate(710, 390)">
+    <rect width="150" height="70" rx="6" fill="#fff" stroke="#ddd"/>
+    <text x="75" y="42" fill="#c0392b" font-family="sans-serif" font-size="26" text-anchor="middle">B</text>
+  </g>
+</svg>
