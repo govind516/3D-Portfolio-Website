@@ -347,7 +347,7 @@ const CinematicPortfolio = () => {
         {/* ================= EXPERIENCE (first section) ================= */}
         <section id="about" className="brut-about">
           <div className="section-label" data-reveal>
-            <span>/ Experience</span>
+            <h2>/ Experience</h2>
             <span>2024 — Present</span>
           </div>
 
@@ -396,7 +396,7 @@ const CinematicPortfolio = () => {
         {/* ================= WORK ================= */}
         <section id="work" className="brut-work">
           <div className="section-label" data-reveal>
-            <span>/ Selected Work</span>
+            <h2>/ Selected Work</h2>
             <span>01 — 06</span>
           </div>
 
@@ -453,7 +453,7 @@ const CinematicPortfolio = () => {
         {/* ================= CONTACT ================= */}
         <section id="contact" className="brut-contact">
           <div className="section-label" data-reveal>
-            <span>/ Contact</span>
+            <h2>/ Contact</h2>
             <span>Let's Talk</span>
           </div>
 
