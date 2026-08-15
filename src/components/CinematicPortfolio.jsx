@@ -1,14 +1,16 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { experiences, projects } from "../constants";
+import { creator } from "../assets";
 
 const contactEmail = "guptagovind516@gmail.com";
 const phoneNumber = "+91 8006213786";
 const resumePath = "/GovindGupta_SoftwareEngineer.pdf";
 
-// Section order matches page order: About/Experience, Work, Contact
+// Section order matches page order: About, Experience, Work, Contact
 const navItems = [
   { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
   { id: "work", label: "Work" },
   { id: "contact", label: "Contact" },
 ];
@@ -143,12 +145,59 @@ const CinematicPortfolio = () => {
     };
   }, []);
 
+  // Custom cursor (fine pointers only)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches)
+      return;
+
+    const cursor = document.querySelector(".brut-cursor");
+    if (!cursor) return;
+
+    document.documentElement.classList.add("has-cursor");
+
+    const move = (event) => {
+      cursor.style.transform = `translate(${event.clientX}px, ${event.clientY}px) translate(-50%, -50%)`;
+      cursor.classList.add("is-visible");
+    };
+
+    const onOver = (event) => {
+      if (
+        event.target.closest(
+          "a, button, input, textarea, select, label, [data-cursor-hover]"
+        )
+      ) {
+        cursor.classList.add("is-active");
+      }
+    };
+
+    const onOut = (event) => {
+      if (
+        event.target.closest(
+          "a, button, input, textarea, select, label, [data-cursor-hover]"
+        )
+      ) {
+        cursor.classList.remove("is-active");
+      }
+    };
+
+    document.addEventListener("mousemove", move, { passive: true });
+    document.addEventListener("mouseover", onOver);
+    document.addEventListener("mouseout", onOut);
+    return () => {
+      document.documentElement.classList.remove("has-cursor");
+      document.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseover", onOver);
+      document.removeEventListener("mouseout", onOut);
+    };
+  }, []);
+
   const toggleTheme = () =>
     setTheme((current) => (current === "dark" ? "light" : "dark"));
 
   // Obsidian-style scroll spy + reveal
   useEffect(() => {
-    const sections = ["about", "work", "contact"];
+    const sections = ["about", "experience", "work", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -222,6 +271,8 @@ const CinematicPortfolio = () => {
         Skip to main content
       </a>
 
+      <div className="brut-cursor" aria-hidden="true" />
+
       <header className="brut-nav">
         <a
           href="#about"
@@ -229,7 +280,7 @@ const CinematicPortfolio = () => {
           aria-label="Govind Gupta portfolio home"
         >
           <span className="brand-mark" aria-hidden="true">GG</span>
-          <span className="brand-name">GOVIND GUPTA</span>
+          <span className="brand-name">Govind.exe</span>
         </a>
 
         <nav aria-label="Primary navigation" className="brut-nav-links">
@@ -243,6 +294,9 @@ const CinematicPortfolio = () => {
               {item.label}
             </a>
           ))}
+          <a className="is-hire" href="#contact">
+            Hire Me
+          </a>
         </nav>
 
         <div className="nav-actions">
@@ -296,7 +350,7 @@ const CinematicPortfolio = () => {
             </a>
           ))}
           <a href={resumePath} download onClick={() => setMenuOpen(false)}>
-            <sup>04</sup>
+            <sup>05</sup>
             Resume
           </a>
         </div>
@@ -310,28 +364,43 @@ const CinematicPortfolio = () => {
       <main id="main-content">
         {/* ================= HERO ================= */}
         <section className="brut-hero">
-          <div className="hero-index" data-reveal>
-            <span>Data Engineer — Databricks · Spark · Spring Boot</span>
-            <span>Based in India · Remote-friendly</span>
+          <div className="hero-deco" aria-hidden="true">
+            <div className="deco-square" />
+            <div className="deco-circle" />
+            <span className="deco-word">DATA</span>
           </div>
 
-          <h1 className="hero-title" data-reveal>
-            BUILT FOR
-            <br />
-            <em>RELIABLE</em>
-            <br />
-            DATA.
-          </h1>
+          <div className="hero-inner">
+            <div className="hero-index">
+              <span>Data Engineer — Databricks · Spark · Spring Boot</span>
+              <span>Based in India · Remote-friendly</span>
+            </div>
 
-          <div className="hero-bottom" data-reveal>
-            <p>
+            <div className="hero-badge">
+              <span className="badge-square" aria-hidden="true">
+                <span className="badge-dot" />
+              </span>
+              <span>System Status: Online</span>
+            </div>
+
+            <h1 className="hero-title">
+              BUILT FOR
+              <br />
+              <em className="text-outline">RELIABLE</em>
+              <br />
+              DATA.
+            </h1>
+
+            <p className="hero-statement">
               I am Govind Gupta — a Data Engineer turning raw business
-              requirements into governed Databricks pipelines, Spark SQL
-              datamarts, and dependable Azure data systems, backed by strong
-              Java Spring Boot API depth.
+              requirements into governed <b>Databricks</b> pipelines,{" "}
+              <b>Spark SQL</b> datamarts, and dependable{" "}
+              <b>Azure</b> data systems, backed by strong{" "}
+              <b>Java Spring Boot</b> API depth.
             </p>
-            <div className="hero-links">
-              <a href="#work" className="brut-button">
+
+            <div className="hero-actions">
+              <a href="#work" className="brut-button is-solid">
                 View Work <b>↓</b>
               </a>
               <a
@@ -344,45 +413,64 @@ const CinematicPortfolio = () => {
           </div>
         </section>
 
-        {/* ================= EXPERIENCE (first section) ================= */}
+        {/* ================= ABOUT ================= */}
         <section id="about" className="brut-about">
+          <div className="section-label" data-reveal>
+            <h2>/ About</h2>
+            <span>Data Engineer</span>
+          </div>
+
+          <div className="about-grid" data-reveal>
+            <div className="avatar-card">
+              <span className="avatar-tag">AVATAR.PNG</span>
+              <img src={creator} alt="Govind Gupta" loading="lazy" />
+            </div>
+            <div className="about-copy">
+              <h2>
+                Now focused on <em>Databricks</em>, ETL and Spark, with strong
+                Java Spring Boot depth.
+              </h2>
+              <div className="about-badges">
+                <span className="about-badge is-dark">
+                  📍 LOCATION: INDIA
+                </span>
+                <span className="about-badge is-green">
+                  🟢 STATUS: AVAILABLE
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= EXPERIENCE ================= */}
+        <section id="experience" className="brut-about">
           <div className="section-label" data-reveal>
             <h2>/ Experience</h2>
             <span>2024 — Present</span>
           </div>
 
-          <h2 className="about-title" data-reveal>
-            NOW FOCUSED ON <em>DATABRICKS</em>, ETL AND SPARK, WITH STRONG JAVA
-            SPRING BOOT DEPTH.
-          </h2>
-
           <div className="brut-timeline">
-            {experiences.map((experience, index) => (
+            {experiences.map((experience) => (
               <article
                 className="timeline-row"
                 key={experience.company_name}
                 data-reveal
               >
-                <div className="timeline-index">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <div className="timeline-icon">
-                  <img
-                    src={experience.icon}
-                    alt={`${experience.company_name} logo`}
-                    loading="lazy"
-                  />
-                </div>
-                <div className="timeline-main">
-                  <div className="timeline-date">{experience.date}</div>
+                <span className="timeline-marker" aria-hidden="true" />
+                <div className="timeline-head">
                   <h3>{experience.title}</h3>
-                  <p className="timeline-company">{experience.company_name}</p>
-                  <ul>
-                    {experience.points.slice(0, 3).map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
+                  <span className="timeline-date-badge">
+                    {experience.date}
+                  </span>
                 </div>
+                <p className="timeline-company">
+                  @ {experience.company_name}
+                </p>
+                <ul className="timeline-points">
+                  {experience.points.slice(0, 3).map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
@@ -404,54 +492,85 @@ const CinematicPortfolio = () => {
             <span>01 — 06</span>
           </div>
 
-          {featuredProjects.map((project, index) => (
-            <article className="brut-project" key={project.name} data-reveal>
-              <div className="project-num">
-                {String(index + 1).padStart(2, "0")}
-              </div>
-              <a
-                className="project-thumb"
-                href={project.source_code_link}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Open ${project.name} source code`}
+          <h2 className="work-title" data-reveal>
+            Selected Works
+          </h2>
+
+          <div className="work-grid">
+            {featuredProjects.map((project, index) => (
+              <article
+                className={`brut-project ${index % 2 === 1 ? "is-offset" : ""}`}
+                key={project.name}
+                data-reveal
               >
-                <img
-                  src={project.image}
-                  alt={project.imageAlt}
-                  loading="lazy"
-                />
-              </a>
-              <div className="project-info">
-                <div className="project-type">{project.type}</div>
-                <h3>{project.name}</h3>
-                <p>{project.description}</p>
-                <div className="project-tags">
-                  {project.tags.slice(0, 4).map((tag) => (
-                    <span key={`${project.name}-${tag.name}`}>{tag.name}</span>
-                  ))}
-                </div>
-                <div className="project-cta">
-                  <a
-                    href={project.source_code_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    CODE ↗
-                  </a>
-                  {project.live_demo_link ? (
+                <a
+                  className="project-thumb"
+                  href={project.source_code_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${project.name} source code`}
+                >
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt}
+                    loading="lazy"
+                  />
+                </a>
+                <div className="project-body">
+                  <div className="project-type">{project.type}</div>
+                  <h3>{project.name}</h3>
+                  <p>{project.description}</p>
+                  <div className="project-tags">
+                    {project.tags.slice(0, 4).map((tag) => (
+                      <span key={`${project.name}-${tag.name}`}>
+                        {tag.name}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="project-cta">
+                    <div className="project-links">
+                      <a
+                        href={project.source_code_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Code ↗
+                      </a>
+                      {project.live_demo_link ? (
+                        <a
+                          href={project.live_demo_link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live ↗
+                        </a>
+                      ) : null}
+                    </div>
                     <a
-                      href={project.live_demo_link}
+                      className="project-arrow"
+                      href={project.source_code_link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`Open ${project.name} source code`}
                     >
-                      LIVE ↗
+                      <i className="ri-arrow-right-up-line" aria-hidden="true" />
                     </a>
-                  ) : null}
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
+
+          <div className="work-footer" data-reveal>
+            <a
+              className="brut-button"
+              href="https://github.com/Govind516?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View All Repos on GitHub <b>→</b>
+            </a>
+          </div>
         </section>
 
         {/* ================= CONTACT ================= */}
@@ -461,95 +580,202 @@ const CinematicPortfolio = () => {
             <span>Let's Talk</span>
           </div>
 
-          <h2 className="contact-title" data-reveal>
-            HAVE A PIPELINE THAT NEEDS <em>FORM?</em>
-          </h2>
+          <div className="contact-card" data-reveal>
+            <div className="contact-badge">Start a Project</div>
 
-          <div className="contact-grid">
-            <div className="contact-side" data-reveal>
-              <p>
-                Send the data problem, source systems, and expected output. I
-                will respond directly — the first project review is free.
-              </p>
-              <div className="contact-list">
-                <a href={`mailto:${contactEmail}`}>
-                  <span>Email</span>
-                  {contactEmail} ↗
-                </a>
-                <a href={`tel:${phoneNumber.replace(/\s+/g, "")}`}>
-                  <span>Phone</span>
-                  +91 80062 13786 ↗
-                </a>
-                <a
-                  href="https://github.com/Govind516"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>GitHub</span>
-                  @Govind516 ↗
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/govindgupta1012/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>LinkedIn</span>
-                  /in/govindgupta1012 ↗
-                </a>
-                <a href={resumePath} download>
-                  <span>Resume</span>
-                  Download PDF ↗
-                </a>
+            <div className="contact-grid">
+              <div className="contact-side">
+                <h2 className="contact-title">
+                  Have a pipeline that needs <em>form?</em>
+                </h2>
+                <p>
+                  Send the data problem, source systems, and expected output. I
+                  will respond directly — the first project review is free.
+                </p>
+                <div className="contact-list">
+                  <a href={`mailto:${contactEmail}`}>
+                    <span className="icon">
+                      <i className="ri-mail-line" aria-hidden="true" />
+                    </span>
+                    <span className="contact-value">
+                      <span className="label">Email</span>
+                      {contactEmail}
+                    </span>
+                    <i className="ri-arrow-right-up-line" aria-hidden="true" />
+                  </a>
+                  <a href={`tel:${phoneNumber.replace(/\s+/g, "")}`}>
+                    <span className="icon">
+                      <i className="ri-phone-line" aria-hidden="true" />
+                    </span>
+                    <span className="contact-value">
+                      <span className="label">Phone</span>
+                      +91 80062 13786
+                    </span>
+                    <i className="ri-arrow-right-up-line" aria-hidden="true" />
+                  </a>
+                  <a
+                    href="https://github.com/Govind516"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="icon">
+                      <i className="ri-github-fill" aria-hidden="true" />
+                    </span>
+                    <span className="contact-value">
+                      <span className="label">GitHub</span>
+                      @Govind516
+                    </span>
+                    <i className="ri-arrow-right-up-line" aria-hidden="true" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/govindgupta1012/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="icon">
+                      <i className="ri-linkedin-fill" aria-hidden="true" />
+                    </span>
+                    <span className="contact-value">
+                      <span className="label">LinkedIn</span>
+                      /in/govindgupta1012
+                    </span>
+                    <i className="ri-arrow-right-up-line" aria-hidden="true" />
+                  </a>
+                  <a href={resumePath} download>
+                    <span className="icon">
+                      <i className="ri-file-download-line" aria-hidden="true" />
+                    </span>
+                    <span className="contact-value">
+                      <span className="label">Resume</span>
+                      Download PDF
+                    </span>
+                    <i className="ri-arrow-right-up-line" aria-hidden="true" />
+                  </a>
+                </div>
               </div>
-            </div>
 
-            <form className="brut-form" onSubmit={handleSubmit} data-reveal>
-              <label>
-                <span>01 / Name</span>
-                <input
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  autoComplete="name"
-                  required
-                  placeholder="Your name"
-                />
-              </label>
-              <label>
-                <span>02 / Email</span>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  autoComplete="email"
-                  required
-                  placeholder="you@example.com"
-                />
-              </label>
-              <label>
-                <span>03 / Message</span>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  required
-                  rows="5"
-                  placeholder="Tell me what you want to build."
-                />
-              </label>
-              <button type="submit" className="brut-button">
-                Send Message <b>→</b>
-              </button>
-            </form>
+              <form
+                className="brut-form"
+                onSubmit={handleSubmit}
+                data-reveal
+              >
+                <label>
+                  <span>01 / Name</span>
+                  <input
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    autoComplete="name"
+                    required
+                    placeholder="Your name"
+                  />
+                </label>
+                <label>
+                  <span>02 / Email</span>
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    autoComplete="email"
+                    required
+                    placeholder="you@example.com"
+                  />
+                </label>
+                <label>
+                  <span>03 / Message</span>
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                    rows="5"
+                    placeholder="Tell me what you want to build."
+                  />
+                </label>
+                <button type="submit" className="brut-button brut-submit">
+                  Transmit Data <b>→</b>
+                </button>
+              </form>
+            </div>
           </div>
         </section>
       </main>
 
       <footer className="brut-footer">
-        <span>© {new Date().getFullYear()} Govind Gupta</span>
-        <span>Databricks / Spark / Java Spring Boot</span>
-        <a href="#about">Back to top ↑</a>
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <h2>
+              Govind<span style={{ color: "var(--accent)" }}>.</span>
+            </h2>
+          </div>
+
+          <div className="footer-col">
+            <h3>Sitemap</h3>
+            <ul>
+              <li>
+                <a href="#about">Home</a>
+              </li>
+              <li>
+                <a href="#experience">Experience</a>
+              </li>
+              <li>
+                <a href="#work">Works</a>
+              </li>
+              <li>
+                <a href="#contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h3>Socials</h3>
+            <div className="footer-socials">
+              <a
+                href="https://github.com/Govind516"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <i className="ri-github-fill" aria-hidden="true" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/govindgupta1012/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <i className="ri-linkedin-fill" aria-hidden="true" />
+              </a>
+              <a
+                href="https://leetcode.com/u/govind516/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LeetCode"
+              >
+                <i className="ri-code-fill" aria-hidden="true" />
+              </a>
+              <a
+                href="https://x.com/gGupta_516"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              >
+                <i className="ri-twitter-fill" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Govind Gupta</span>
+          <span>Databricks / Spark / Java Spring Boot</span>
+          <a href="#about">Back to top ↑</a>
+        </div>
+
+        <div className="footer-watermark" aria-hidden="true">
+          DATA
+        </div>
       </footer>
     </div>
   );

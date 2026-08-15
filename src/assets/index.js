@@ -3,6 +3,8 @@ import iiitv from "./company/iiitv.png";
 import skepsi from "./company/Skepsi.png";
 import swoc from "./company/swoc.png";
 
+import creator from "./creator.png";
+
 import bookFinderVisual from "./projects/book-finder.png";
 import journalPipelineVisual from "./projects/journal-pipeline.png";
 import meetingCopilotVisual from "./projects/meeting-copilot.jpg";
@@ -12,6 +14,7 @@ import stockForecastVisual from "./projects/stock-forecast.jpg";
 
 export {
   bookFinderVisual,
+  creator,
   infosys,
   iiitv,
   journalPipelineVisual,
