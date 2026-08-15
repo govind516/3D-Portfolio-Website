@@ -4,6 +4,7 @@ import skepsi from "./company/Skepsi.png";
 import swoc from "./company/swoc.png";
 
 import creator from "./creator.png";
+import mahipal from "./testimonial/Mahipal.jpeg";
 
 import bookFinderVisual from "./projects/book-finder.png";
 import journalPipelineVisual from "./projects/journal-pipeline.png";
@@ -18,6 +19,7 @@ export {
   infosys,
   iiitv,
   journalPipelineVisual,
+  mahipal,
   meetingCopilotVisual,
   movieRecommenderVisual,
   quizApiVisual,

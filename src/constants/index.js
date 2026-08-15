@@ -3,6 +3,7 @@ import {
   infosys,
   iiitv,
   journalPipelineVisual,
+  mahipal,
   meetingCopilotVisual,
   movieRecommenderVisual,
   quizApiVisual,
@@ -80,6 +81,8 @@ const projects = [
     ],
     source_code_link: "https://github.com/govind516/meeting-to-action-copilot/", 
     image: meetingCopilotVisual,
+    imageWidth: 1200,
+    imageHeight: 801,
     imageAlt:
       "Screenshot of the Meeting-to-Action Copilot app showing a meeting summary and generated action items",
   },
@@ -115,6 +118,8 @@ const projects = [
     ],
     source_code_link: "https://github.com/govind516/journal-pipeline/",
     image: journalPipelineVisual,
+    imageWidth: 676,
+    imageHeight: 451,
     imageAlt:
       "Screenshot of the Journal App writing interface with a list of journal entries",
 
@@ -141,6 +146,8 @@ const projects = [
     ],
     source_code_link: "https://github.com/govind516/Quiz-App/",
     image: quizApiVisual,
+    imageWidth: 1008,
+    imageHeight: 720,
     imageAlt:
       "Screenshot of the Quiz API platform showing quiz creation and result generation endpoints",
   },
@@ -170,6 +177,8 @@ const projects = [
     source_code_link: "https://github.com/govind516/movie-recommender-system/",
     live_demo_link: "https://movie-recommender-system-j87x.onrender.com/",
     image: movieRecommenderVisual,
+    imageWidth: 800,
+    imageHeight: 500,
     imageAlt:
       "Screenshot of the Movie Recommender showing personalized movie recommendations based on content-based filtering",
   },
@@ -198,6 +207,8 @@ const projects = [
     ],
     source_code_link: "https://github.com/govind516/Book-Finder-App/",
     image: stockForecastVisual,
+    imageWidth: 1008,
+    imageHeight: 720,
     imageAlt:
       "Screenshot of the Stock Price Prediction tool charting historical data alongside predicted stock prices",
   },
@@ -222,10 +233,23 @@ const projects = [
     source_code_link: "https://github.com/govind516/Book-Finder-App/",
     live_demo_link: "https://43rklk-3000.csb.app/",
     image: bookFinderVisual,
+    imageWidth: 1353,
+    imageHeight: 867,
     imageAlt:
       "Screenshot of the Book Finder App displaying book search results with cover images and publication details",
   },
 ];
 
-export { experiences, projects };
+const testimonials = [
+  {
+    testimonial:
+      "Govind Gupta has been an excellent addition to our team during his internship.",
+    name: "Mahipal Rajpurohit",
+    designation: "VP",
+    company: "Skepsi.ai",
+    image: mahipal,
+  },
+];
+
+export { experiences, projects, testimonials };
 

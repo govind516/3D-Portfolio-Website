@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-import { experiences, projects } from "../constants";
+import { experiences, projects, testimonials } from "../constants";
 import { creator } from "../assets";
 
 const contactEmail = "guptagovind516@gmail.com";
@@ -91,6 +91,7 @@ const CinematicPortfolio = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [activeSection, setActiveSection] = useState("about");
   const [theme, setTheme] = useState(getInitialTheme);
+  const [preloaderDone, setPreloaderDone] = useState(false);
 
   const featuredProjects = useMemo(
     () =>
@@ -152,43 +153,77 @@ const CinematicPortfolio = () => {
       return;
 
     const cursor = document.querySelector(".brut-cursor");
+    const ring = document.querySelector(".brut-cursor-ring");
     if (!cursor) return;
 
     document.documentElement.classList.add("has-cursor");
 
+    let targetX = -100;
+    let targetY = -100;
+    let ringX = -100;
+    let ringY = -100;
+    let raf = null;
+
     const move = (event) => {
-      cursor.style.transform = `translate(${event.clientX}px, ${event.clientY}px) translate(-50%, -50%)`;
+      targetX = event.clientX;
+      targetY = event.clientY;
+      cursor.style.transform = `translate(${targetX}px, ${targetY}px) translate(-50%, -50%)`;
       cursor.classList.add("is-visible");
+      if (ring) ring.classList.add("is-visible");
     };
 
+    const loop = () => {
+      ringX += (targetX - ringX) * 0.16;
+      ringY += (targetY - ringY) * 0.16;
+      if (ring) {
+        ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+      }
+      raf = requestAnimationFrame(loop);
+    };
+
+    raf = requestAnimationFrame(loop);
+
+    const isButtonLike = (target) =>
+      target.closest(
+        ".brut-button, .project-arrow, .theme-toggle, .brut-resume, .is-hire, button, input, textarea, select, label"
+      );
+    const isLink = (target) => target.closest("a");
+
     const onOver = (event) => {
-      if (
-        event.target.closest(
-          "a, button, input, textarea, select, label, [data-cursor-hover]"
-        )
-      ) {
+      if (isButtonLike(event.target)) {
         cursor.classList.add("is-active");
+        return;
+      }
+      if (isLink(event.target)) {
+        cursor.classList.add("is-text");
       }
     };
 
     const onOut = (event) => {
-      if (
-        event.target.closest(
-          "a, button, input, textarea, select, label, [data-cursor-hover]"
-        )
-      ) {
+      if (isButtonLike(event.target)) {
         cursor.classList.remove("is-active");
       }
+      if (isLink(event.target)) {
+        cursor.classList.remove("is-text");
+      }
+    };
+
+    const onLeave = () => {
+      cursor.classList.remove("is-visible", "is-active", "is-text");
+      if (ring) ring.classList.remove("is-visible");
     };
 
     document.addEventListener("mousemove", move, { passive: true });
     document.addEventListener("mouseover", onOver);
     document.addEventListener("mouseout", onOut);
+    document.addEventListener("mouseleave", onLeave);
     return () => {
       document.documentElement.classList.remove("has-cursor");
       document.removeEventListener("mousemove", move);
       document.removeEventListener("mouseover", onOver);
       document.removeEventListener("mouseout", onOut);
+      document.removeEventListener("mouseleave", onLeave);
+      cancelAnimationFrame(raf);
     };
   }, []);
 
@@ -247,6 +282,81 @@ const CinematicPortfolio = () => {
     return () => revealObserver.disconnect();
   }, []);
 
+  // Intro preloader
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reduced =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      setPreloaderDone(true);
+      return;
+    }
+    document.body.style.overflow = "hidden";
+    const timer = window.setTimeout(() => {
+      setPreloaderDone(true);
+      document.body.style.overflow = "";
+    }, 900);
+    return () => {
+      window.clearTimeout(timer);
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  // Magnetic buttons + card tilt (fine pointers, no reduced motion)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches)
+      return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const magneticEls = document.querySelectorAll(
+      ".brut-button, .project-arrow, .brut-resume, .theme-toggle"
+    );
+    const onMagneticMove = (event) => {
+      const el = event.currentTarget;
+      const rect = el.getBoundingClientRect();
+      const x = event.clientX - (rect.left + rect.width / 2);
+      const y = event.clientY - (rect.top + rect.height / 2);
+      el.style.translate = `${x * 0.18}px ${y * 0.3}px`;
+    };
+    const onMagneticLeave = (event) => {
+      event.currentTarget.style.translate = "";
+    };
+    magneticEls.forEach((el) => {
+      el.addEventListener("mousemove", onMagneticMove);
+      el.addEventListener("mouseleave", onMagneticLeave);
+    });
+
+    const tiltEls = document.querySelectorAll(".brut-project");
+    const onTiltMove = (event) => {
+      const el = event.currentTarget;
+      const rect = el.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width - 0.5;
+      const py = (event.clientY - rect.top) / rect.height - 0.5;
+      el.style.transform = `perspective(900px) rotateX(${(-py * 5).toFixed(
+        2
+      )}deg) rotateY(${(px * 5).toFixed(2)}deg) translateY(-2px)`;
+    };
+    const onTiltLeave = (event) => {
+      event.currentTarget.style.transform = "";
+    };
+    tiltEls.forEach((el) => {
+      el.addEventListener("mousemove", onTiltMove);
+      el.addEventListener("mouseleave", onTiltLeave);
+    });
+
+    return () => {
+      magneticEls.forEach((el) => {
+        el.removeEventListener("mousemove", onMagneticMove);
+        el.removeEventListener("mouseleave", onMagneticLeave);
+      });
+      tiltEls.forEach((el) => {
+        el.removeEventListener("mousemove", onTiltMove);
+        el.removeEventListener("mouseleave", onTiltLeave);
+      });
+    };
+  }, []);
+
   const handleChange = (event) => {
     setForm((current) => ({
       ...current,
@@ -266,12 +376,24 @@ const CinematicPortfolio = () => {
   };
 
   return (
-    <div className="brut-site">
+    <div className={`brut-site ${preloaderDone ? "is-loaded" : ""}`}>
+      <div
+        className={`preloader ${preloaderDone ? "is-done" : ""}`}
+        aria-hidden="true"
+      >
+        <span className="preloader-tag">Govind.exe — Loading</span>
+        <strong className="preloader-title">Data</strong>
+        <span className="preloader-bar">
+          <i />
+        </span>
+      </div>
+
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
 
       <div className="brut-cursor" aria-hidden="true" />
+      <div className="brut-cursor-ring" aria-hidden="true" />
 
       <header className="brut-nav">
         <a
@@ -289,12 +411,13 @@ const CinematicPortfolio = () => {
               key={item.id}
               href={`#${item.id}`}
               className={activeSection === item.id ? "is-active" : ""}
+              aria-current={activeSection === item.id ? "true" : undefined}
             >
               <sup>{String(index + 1).padStart(2, "0")}</sup>
               {item.label}
             </a>
           ))}
-          <a className="is-hire" href="#contact">
+          <a className="is-hire" href="#contact" aria-label="Hire Govind Gupta">
             Hire Me
           </a>
         </nav>
@@ -344,6 +467,7 @@ const CinematicPortfolio = () => {
               key={item.id}
               href={`#${item.id}`}
               onClick={() => setMenuOpen(false)}
+              aria-current={activeSection === item.id ? "true" : undefined}
             >
               <sup>{String(index + 1).padStart(2, "0")}</sup>
               {item.label}
@@ -423,7 +547,14 @@ const CinematicPortfolio = () => {
           <div className="about-grid" data-reveal>
             <div className="avatar-card">
               <span className="avatar-tag">AVATAR.PNG</span>
-              <img src={creator} alt="Govind Gupta" loading="lazy" />
+              <img
+                src={creator}
+                alt="Govind Gupta"
+                loading="lazy"
+                width="208"
+                height="208"
+                decoding="async"
+              />
             </div>
             <div className="about-copy">
               <h2>
@@ -440,6 +571,31 @@ const CinematicPortfolio = () => {
               </div>
             </div>
           </div>
+
+          <div className="testimonial-card" data-reveal>
+            <div className="testimonial-photo">
+              <img
+                src={testimonials[0].image}
+                alt={`${testimonials[0].name}, ${testimonials[0].designation} at ${testimonials[0].company}`}
+                width="100"
+                height="100"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <figure className="testimonial-body">
+              <span className="testimonial-mark" aria-hidden="true">
+                "
+              </span>
+              <blockquote>{testimonials[0].testimonial}</blockquote>
+              <figcaption>
+                <strong>{testimonials[0].name}</strong>
+                <span>
+                  {testimonials[0].designation} — {testimonials[0].company}
+                </span>
+              </figcaption>
+            </figure>
+          </div>
         </section>
 
         {/* ================= EXPERIENCE ================= */}
@@ -450,11 +606,12 @@ const CinematicPortfolio = () => {
           </div>
 
           <div className="brut-timeline">
-            {experiences.map((experience) => (
+            {experiences.map((experience, index) => (
               <article
                 className="timeline-row"
                 key={experience.company_name}
                 data-reveal
+                style={{ "--reveal-delay": `${index * 70}ms` }}
               >
                 <span className="timeline-marker" aria-hidden="true" />
                 <div className="timeline-head">
@@ -502,6 +659,7 @@ const CinematicPortfolio = () => {
                 className={`brut-project ${index % 2 === 1 ? "is-offset" : ""}`}
                 key={project.name}
                 data-reveal
+                style={{ "--reveal-delay": `${index * 70}ms` }}
               >
                 <a
                   className="project-thumb"
@@ -514,6 +672,9 @@ const CinematicPortfolio = () => {
                     src={project.image}
                     alt={project.imageAlt}
                     loading="lazy"
+                    decoding="async"
+                    width={project.imageWidth}
+                    height={project.imageHeight}
                   />
                 </a>
                 <div className="project-body">
