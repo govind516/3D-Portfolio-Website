@@ -71,7 +71,7 @@ const projects = [
   {
     name: "Meeting-to-Action Copilot",
     description:
-      "An AI-powered backend service that converts meeting transcripts into summaries, action items, and follow-ups through modular Spring Boot REST APIs, Dockerized services, and SonarQube quality gates.",
+      "AI backend that turns meeting transcripts into summaries and action items.",
     tags: [
       { name: "Spring Boot" },
       { name: "REST APIs" },
@@ -89,7 +89,7 @@ const projects = [
   {
     name: "Journal App",
     description:
-      "A secure journaling app with Spring Boot, Redis caching, Kafka event streaming, JWT and Google OAuth authentication with SonarQube for code quality assurance.",
+      "Secure journaling with JWT/OAuth auth, Redis caching and Kafka event streaming.",
     tags: [
       {
         name: "Java",
@@ -127,7 +127,7 @@ const projects = [
   {
     name: "Quiz App Backend",
     description:
-      "A backend-only quiz application with APIs to handle quiz creation, management, scoring, and result generation providing enhanced user experience.",
+      "Quiz CRUD, scoring and result APIs on Spring Boot + PostgreSQL.",
     tags: [
       {
         name: "Java",
@@ -154,7 +154,7 @@ const projects = [
   {
     name: "Movie Recommender",
     description:
-      "A web-based system that delivers personalized movie recommendations using content-based filtering for an enhanced viewing experience.",
+      "Content-based movie recommendations trained on Scikit-Learn.",
     tags: [
       {
         name: "Machine Learning",
@@ -185,7 +185,7 @@ const projects = [
   {
     name: "Stock Price Prediction",
     description:
-      "A machine learning model that combines KNN and LSTM algorithms to analyze historical data, predict stock prices, and help users make informed investment decisions.",
+      "KNN + LSTM model that forecasts stock prices from historical data.",
     tags: [
       {
         name: "Machine Learning",
@@ -215,7 +215,7 @@ const projects = [
   {
     name: "Book Finder App",
     description:
-      "Allows users to search for books by title, author, and language using the Open Library API and displays search results with book covers, titles, authors, and publication details.",
+      "Search books by title, author and language via the Open Library API.",
     tags: [
       {
         name: "React"

@@ -9,10 +9,18 @@ const resumePath = "/GovindGupta_SoftwareEngineer.pdf";
 
 // Section order matches page order: About, Experience, Work, Contact
 const navItems = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "work", label: "Work" },
-  { id: "contact", label: "Contact" },
+  { id: "about", method: "GET", path: "/about" },
+  { id: "experience", method: "GET", path: "/experience" },
+  { id: "work", method: "GET", path: "/work" },
+  { id: "contact", method: "GET", path: "/contact" },
+];
+
+const bootLines = [
+  <>govind.exe --booting</>,
+  <>loading databricks.core ....... <em>[OK]</em></>,
+  <>loading spark.sql.metrics ..... <em>[OK]</em></>,
+  <>loading etl.pipeline .......... <em>[OK]</em></>,
+  <>system online — v4.2.0</>,
 ];
 
 const projectTypes = [
@@ -92,6 +100,8 @@ const CinematicPortfolio = () => {
   const [activeSection, setActiveSection] = useState("about");
   const [theme, setTheme] = useState(getInitialTheme);
   const [preloaderDone, setPreloaderDone] = useState(false);
+  const [now, setNow] = useState(() => new Date());
+  const [startedAt] = useState(() => Date.now());
 
   const featuredProjects = useMemo(
     () =>
@@ -114,10 +124,11 @@ const CinematicPortfolio = () => {
     }
   }, [theme]);
 
-  // Scroll progress bar + nav scrolled state
+  // Scroll progress bar + nav scrolled state + status bar visibility
   useEffect(() => {
     const progressBar = document.querySelector(".brut-progress span");
     const nav = document.querySelector(".brut-nav");
+    const statusBar = document.querySelector(".system-status");
     if (!progressBar || !nav) return;
 
     let ticking = false;
@@ -127,6 +138,12 @@ const CinematicPortfolio = () => {
       const pct = height > 0 ? Math.min(100, (scrollTop / height) * 100) : 0;
       progressBar.style.width = `${pct}%`;
       nav.classList.toggle("scrolled", scrollTop > 8);
+      if (statusBar) {
+        statusBar.classList.toggle(
+          "is-hidden",
+          scrollTop > window.innerHeight * 0.75
+        );
+      }
       ticking = false;
     };
 
@@ -295,11 +312,18 @@ const CinematicPortfolio = () => {
     const timer = window.setTimeout(() => {
       setPreloaderDone(true);
       document.body.style.overflow = "";
-    }, 900);
+    }, 1300);
     return () => {
       window.clearTimeout(timer);
       document.body.style.overflow = "";
     };
+  }, []);
+
+  // Live clock for the system status bar
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const timer = window.setInterval(() => setNow(new Date()), 1000);
+    return () => window.clearInterval(timer);
   }, []);
 
   // Magnetic buttons + card tilt (fine pointers, no reduced motion)
@@ -375,17 +399,42 @@ const CinematicPortfolio = () => {
     window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
   };
 
+  const istTime = now.toLocaleTimeString("en-GB", {
+    timeZone: "Asia/Kolkata",
+    hour12: false,
+  });
+  const uptimeSeconds = Math.max(
+    0,
+    Math.floor((now.getTime() - startedAt) / 1000)
+  );
+  const uptime = [
+    Math.floor(uptimeSeconds / 3600),
+    Math.floor((uptimeSeconds % 3600) / 60),
+    uptimeSeconds % 60,
+  ]
+    .map((unit) => String(unit).padStart(2, "0"))
+    .join(":");
+
   return (
     <div className={`brut-site ${preloaderDone ? "is-loaded" : ""}`}>
       <div
         className={`preloader ${preloaderDone ? "is-done" : ""}`}
         aria-hidden="true"
       >
-        <span className="preloader-tag">Govind.exe — Loading</span>
-        <strong className="preloader-title">Data</strong>
-        <span className="preloader-bar">
-          <i />
-        </span>
+        <div className="boot-window">
+          {bootLines.map((line, index) => (
+            <p
+              className="boot-line"
+              key={index}
+              style={{ "--line-delay": `${index * 160}ms` }}
+            >
+              {line}
+            </p>
+          ))}
+          <span className="boot-cursor" aria-hidden="true">
+            ▋
+          </span>
+        </div>
       </div>
 
       <a className="skip-link" href="#main-content">
@@ -394,6 +443,12 @@ const CinematicPortfolio = () => {
 
       <div className="brut-cursor" aria-hidden="true" />
       <div className="brut-cursor-ring" aria-hidden="true" />
+
+      <div className="system-status" aria-hidden="true">
+        <span>IST {istTime}</span>
+        <span>UP {uptime}</span>
+        <span>DATA-ONLINE</span>
+      </div>
 
       <header className="brut-nav">
         <a
@@ -406,19 +461,19 @@ const CinematicPortfolio = () => {
         </a>
 
         <nav aria-label="Primary navigation" className="brut-nav-links">
-          {navItems.map((item, index) => (
+          {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
               className={activeSection === item.id ? "is-active" : ""}
               aria-current={activeSection === item.id ? "true" : undefined}
             >
-              <sup>{String(index + 1).padStart(2, "0")}</sup>
-              {item.label}
+              <span className="method">{item.method}</span>
+              {item.path}
             </a>
           ))}
           <a className="is-hire" href="#contact" aria-label="Hire Govind Gupta">
-            Hire Me
+            <span className="method">POST</span> /hire
           </a>
         </nav>
 
@@ -462,20 +517,19 @@ const CinematicPortfolio = () => {
           id="mobile-menu"
           className={`brut-mobile-menu ${menuOpen ? "is-open" : ""}`}
         >
-          {navItems.map((item, index) => (
+          {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
               onClick={() => setMenuOpen(false)}
               aria-current={activeSection === item.id ? "true" : undefined}
             >
-              <sup>{String(index + 1).padStart(2, "0")}</sup>
-              {item.label}
+              <span className="method">{item.method}</span>
+              {item.path}
             </a>
           ))}
           <a href={resumePath} download onClick={() => setMenuOpen(false)}>
-            <sup>05</sup>
-            Resume
+            <span className="method">GET</span> /resume
           </a>
         </div>
       </header>
@@ -624,7 +678,7 @@ const CinematicPortfolio = () => {
                   @ {experience.company_name}
                 </p>
                 <ul className="timeline-points">
-                  {experience.points.slice(0, 3).map((point) => (
+                  {experience.points.slice(0, 2).map((point) => (
                     <li key={point}>{point}</li>
                   ))}
                 </ul>
@@ -750,8 +804,8 @@ const CinematicPortfolio = () => {
                   Have a pipeline that needs <em>form?</em>
                 </h2>
                 <p>
-                  Send the data problem, source systems, and expected output. I
-                  will respond directly — the first project review is free.
+                  Send the data problem, source systems, and expected output —
+                  the first project review is free.
                 </p>
                 <div className="contact-list">
                   <a href={`mailto:${contactEmail}`}>
