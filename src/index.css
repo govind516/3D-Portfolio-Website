@@ -820,13 +820,14 @@ html.light .brut-nav {
   background: var(--bg2);
   box-shadow: 8px 8px 0 var(--shadow);
   overflow: hidden;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
 }
 
 .avatar-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   filter: grayscale(1) contrast(1) brightness(1.05);
   transition: filter 0.5s ease, transform 0.5s ease;
 }
@@ -1810,3 +1811,31 @@ html.light .brut-nav {
     display: none;
   }
 }
+
+.toast-theme {
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 var(--ink);
+  font-family: inherit;
+}
+
+.toast-theme::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0;
+  inset-block-end: 0;
+  width: 6px;
+  background: var(--accent);
+}
+
+.toast-theme--success::after {
+  background: var(--accent);
+}
+
+.toast-theme--error::after {
+  background: #ff4d4d;
+}
+

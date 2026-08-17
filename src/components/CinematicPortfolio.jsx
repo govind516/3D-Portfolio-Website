@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+import { avatar } from "../assets";
 import { experiences, projects, testimonials } from "../constants";
-import { creator } from "../assets";
 
 const contactEmail = "guptagovind516@gmail.com";
 const phoneNumber = "+91 8006213786";
@@ -97,6 +100,7 @@ const MoonIcon = () => (
 const CinematicPortfolio = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [theme, setTheme] = useState(getInitialTheme);
   const [preloaderDone, setPreloaderDone] = useState(false);
@@ -390,13 +394,38 @@ const CinematicPortfolio = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const subject = encodeURIComponent(
-      `Portfolio inquiry from ${form.name || "a visitor"}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-    );
-    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+    setSending(true);
+
+    emailjs
+      .send(
+        "service_7te322b",
+        "template_kgqdx6i",
+        {
+          from_name: form.name,
+          from_email: form.email,
+          reply_to: form.email,
+          to_name: "Govind Gupta",
+          to_email: contactEmail,
+          message: form.message,
+        },
+        "tGpGdhVM1VV82Vdzg"
+      )
+      .then(
+        () => {
+          setSending(false);
+          toast.success("Message sent successfully!", {
+            className: "toast-theme toast-theme--success",
+          });
+          setForm({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          setSending(false);
+          console.error(error);
+          toast.error("Oops, something went wrong. Please try again.", {
+            className: "toast-theme toast-theme--error",
+          });
+        }
+      );
   };
 
   const istTime = now.toLocaleTimeString("en-GB", {
@@ -602,7 +631,7 @@ const CinematicPortfolio = () => {
             <div className="avatar-card">
               <span className="avatar-tag">AVATAR.PNG</span>
               <img
-                src={creator}
+                src={avatar}
                 alt="Govind Gupta"
                 loading="lazy"
                 width="208"
@@ -908,8 +937,12 @@ const CinematicPortfolio = () => {
                     placeholder="Tell me what you want to build."
                   />
                 </label>
-                <button type="submit" className="brut-button brut-submit">
-                  Transmit Data <b>→</b>
+                <button
+                  type="submit"
+                  className="brut-button brut-submit"
+                  disabled={sending}
+                >
+                  {sending ? "Transmitting…" : "Transmit Data"} <b>→</b>
                 </button>
               </form>
             </div>
@@ -992,6 +1025,15 @@ const CinematicPortfolio = () => {
           DATA
         </div>
       </footer>
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        closeOnClick
+        pauseOnFocusLoss
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };
