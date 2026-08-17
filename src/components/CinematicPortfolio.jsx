@@ -128,11 +128,10 @@ const CinematicPortfolio = () => {
     }
   }, [theme]);
 
-  // Scroll progress bar + nav scrolled state + status bar visibility
+  // Scroll progress bar + nav scrolled state
   useEffect(() => {
     const progressBar = document.querySelector(".brut-progress span");
     const nav = document.querySelector(".brut-nav");
-    const statusBar = document.querySelector(".system-status");
     if (!progressBar || !nav) return;
 
     let ticking = false;
@@ -142,12 +141,6 @@ const CinematicPortfolio = () => {
       const pct = height > 0 ? Math.min(100, (scrollTop / height) * 100) : 0;
       progressBar.style.width = `${pct}%`;
       nav.classList.toggle("scrolled", scrollTop > 8);
-      if (statusBar) {
-        statusBar.classList.toggle(
-          "is-hidden",
-          scrollTop > window.innerHeight * 0.75
-        );
-      }
       ticking = false;
     };
 
@@ -165,6 +158,23 @@ const CinematicPortfolio = () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
+  }, []);
+
+  // Hide system status bar once the hero is scrolled out of view
+  useEffect(() => {
+    const statusBar = document.querySelector(".system-status");
+    const hero = document.querySelector(".brut-hero");
+    if (!statusBar || !hero) return;
+    if (typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        statusBar.classList.toggle("is-hidden", !entries[0].isIntersecting);
+      },
+      { threshold: 0 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, []);
 
   // Custom cursor (fine pointers only)
@@ -729,7 +739,9 @@ const CinematicPortfolio = () => {
         <section id="work" className="brut-work">
           <div className="section-label" data-reveal>
             <h2>/ Selected Work</h2>
-            <span>01 — 06</span>
+            <span>
+              01 — {String(featuredProjects.length).padStart(2, "0")}
+            </span>
           </div>
 
           <h2 className="work-title" data-reveal>
@@ -744,22 +756,35 @@ const CinematicPortfolio = () => {
                 data-reveal
                 style={{ "--reveal-delay": `${index * 70}ms` }}
               >
-                <a
-                  className="project-thumb"
-                  href={project.source_code_link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Open ${project.name} source code`}
-                >
-                  <img
-                    src={project.image}
-                    alt={project.imageAlt}
-                    loading="lazy"
-                    decoding="async"
-                    width={project.imageWidth}
-                    height={project.imageHeight}
-                  />
-                </a>
+                {project.source_code_link ? (
+                  <a
+                    className="project-thumb"
+                    href={project.source_code_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${project.name} source code`}
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt}
+                      loading="lazy"
+                      decoding="async"
+                      width={project.imageWidth}
+                      height={project.imageHeight}
+                    />
+                  </a>
+                ) : (
+                  <div className="project-thumb">
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt}
+                      loading="lazy"
+                      decoding="async"
+                      width={project.imageWidth}
+                      height={project.imageHeight}
+                    />
+                  </div>
+                )}
                 <div className="project-body">
                   <div className="project-type">{project.type}</div>
                   <h3>{project.name}</h3>
@@ -773,13 +798,15 @@ const CinematicPortfolio = () => {
                   </div>
                   <div className="project-cta">
                     <div className="project-links">
-                      <a
-                        href={project.source_code_link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Code ↗
-                      </a>
+                      {project.source_code_link ? (
+                        <a
+                          href={project.source_code_link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Code ↗
+                        </a>
+                      ) : null}
                       {project.live_demo_link ? (
                         <a
                           href={project.live_demo_link}
@@ -790,15 +817,20 @@ const CinematicPortfolio = () => {
                         </a>
                       ) : null}
                     </div>
-                    <a
-                      className="project-arrow"
-                      href={project.source_code_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Open ${project.name} source code`}
-                    >
-                      <i className="ri-arrow-right-up-line" aria-hidden="true" />
-                    </a>
+                    {project.source_code_link ? (
+                      <a
+                        className="project-arrow"
+                        href={project.source_code_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Open ${project.name} source code`}
+                      >
+                        <i
+                          className="ri-arrow-right-up-line"
+                          aria-hidden="true"
+                        />
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               </article>
@@ -835,6 +867,9 @@ const CinematicPortfolio = () => {
                 <p>
                   Send the data problem, source systems, and expected output —
                   the first project review is free.
+                </p>
+                <p className="contact-response">
+                  I typically respond within 24 hours.
                 </p>
                 <div className="contact-list">
                   <a href={`mailto:${contactEmail}`}>

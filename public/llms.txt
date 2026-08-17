@@ -1,0 +1,34 @@
+# Govind Gupta
+
+Data Engineer and Java Spring Boot developer.
+
+## About
+
+Govind Gupta builds scalable data pipelines and backend systems. He designs and
+maintains Databricks Spark SQL data pipelines, builds datamarts and catalog
+blocks, and engineers reusable asset bundles for modular data services. He is
+currently a Specialist Programmer at Infosys and has interned at Skepsi.ai and
+IIIT Vadodara.
+
+## Role
+
+- Specialist Programmer, Infosys (June 2025 - Present)
+- SDE Intern, Skepsi.ai (June 2024 - September 2024)
+- Summer Research Intern, IIIT Vadodara (May 2024 - June 2024)
+- Open Source Contributor, Social Winter of Code (January 2024 - February 2024)
+
+## Tech Stack
+
+- Data: Databricks, Spark SQL, PySpark, ETL Pipelines, Data Quality
+- Languages: Python, Java, SQL
+- Backend: Java Spring Boot, REST APIs, Kafka, Redis
+- Cloud & Data Stores: Azure, MongoDB, PostgreSQL
+- Other: Docker, Linux, Git
+
+## Key Links
+
+- Portfolio: https://govind-digital.vercel.app/
+- GitHub: https://github.com/Govind516
+- LinkedIn: https://www.linkedin.com/in/govindgupta1012/
+- X / Twitter: https://x.com/gGupta_516
+- LeetCode: https://leetcode.com/u/govind516/

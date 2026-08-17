@@ -77,7 +77,6 @@ const projects = [
       { name: "SonarQube" },
       { name: "React" },
     ],
-    source_code_link: "https://github.com/govind516/meeting-to-action-copilot/", 
     image: meetingCopilotVisual,
     imageWidth: 1200,
     imageHeight: 801,
@@ -114,7 +113,7 @@ const projects = [
         name: "Swagger"
       },
     ],
-    source_code_link: "https://github.com/govind516/journal-pipeline/",
+    source_code_link: "https://github.com/govind516/journalApp/",
     image: journalPipelineVisual,
     imageWidth: 676,
     imageHeight: 451,
