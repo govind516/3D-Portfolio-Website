@@ -1,5 +1,4 @@
 import {
-  bookFinderVisual,
   infosys,
   iiitv,
   journalPipelineVisual,
@@ -8,7 +7,6 @@ import {
   movieRecommenderVisual,
   quizApiVisual,
   skepsi,
-  stockForecastVisual,
   swoc
 } from "../assets";
 
@@ -181,62 +179,6 @@ const projects = [
     imageHeight: 500,
     imageAlt:
       "Screenshot of the Movie Recommender showing personalized movie recommendations based on content-based filtering",
-  },
-  {
-    name: "Stock Price Prediction",
-    description:
-      "KNN + LSTM model that forecasts stock prices from historical data.",
-    tags: [
-      {
-        name: "Machine Learning",
-        
-      },
-      {
-        name: "Jupyter Notebook",
-        
-      },
-      {
-        name: "Python"
-      },
-      {
-        name: "Scikit-Learn"
-      },
-      {
-        name: "TensorFlow"
-      },
-    ],
-    source_code_link: "https://github.com/govind516/Book-Finder-App/",
-    image: stockForecastVisual,
-    imageWidth: 1008,
-    imageHeight: 720,
-    imageAlt:
-      "Screenshot of the Stock Price Prediction tool charting historical data alongside predicted stock prices",
-  },
-  {
-    name: "Book Finder App",
-    description:
-      "Search books by title, author and language via the Open Library API.",
-    tags: [
-      {
-        name: "React"
-      },
-      {
-        name: "Tailwind CSS"
-      },
-      {
-        name: "Open API"
-      },
-      {
-        name: "CodeSandbox"
-      },
-    ],
-    source_code_link: "https://github.com/govind516/Book-Finder-App/",
-    live_demo_link: "https://43rklk-3000.csb.app/",
-    image: bookFinderVisual,
-    imageWidth: 1353,
-    imageHeight: 867,
-    imageAlt:
-      "Screenshot of the Book Finder App displaying book search results with cover images and publication details",
   },
 ];
 
