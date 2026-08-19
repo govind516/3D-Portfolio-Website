@@ -8,7 +8,7 @@ import mahipal from "./testimonial/Mahipal.jpeg";
 
 import journalPipelineVisual from "./projects/journal-pipeline.png";
 import meetingCopilotVisual from "./projects/meeting-copilot.jpg";
-import movieRecommenderVisual from "./projects/movie-recommender-ui.svg";
+import movieRecommenderVisual from "./projects/movie-recommender.png";
 import quizApiVisual from "./projects/quiz-api.jpg";
 
 export {
