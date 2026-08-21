@@ -82,6 +82,7 @@ const projects = [
     imageHeight: 801,
     imageAlt:
       "Screenshot of the Meeting-to-Action Copilot app showing a meeting summary and generated action items",
+    inProgress: true,
   },
   {
     name: "Journal App",

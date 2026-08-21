@@ -101,7 +101,7 @@ const CinematicPortfolio = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState("");
   const [theme, setTheme] = useState(getInitialTheme);
   const [preloaderDone, setPreloaderDone] = useState(false);
   const [now, setNow] = useState(() => new Date());
@@ -216,7 +216,7 @@ const CinematicPortfolio = () => {
 
     const isButtonLike = (target) =>
       target.closest(
-        ".brut-button, .project-arrow, .theme-toggle, .brut-resume, .is-hire, button, input, textarea, select, label"
+        ".brut-button, .theme-toggle, .brut-resume, .is-hire, button, input, textarea, select, label"
       );
     const isLink = (target) => target.closest("a");
 
@@ -269,6 +269,10 @@ const CinematicPortfolio = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
+          } else {
+            setActiveSection((current) =>
+              current === entry.target.id ? "" : current
+            );
           }
         });
       },
@@ -348,7 +352,7 @@ const CinematicPortfolio = () => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const magneticEls = document.querySelectorAll(
-      ".brut-button, .project-arrow, .brut-resume, .theme-toggle"
+      ".brut-button, .brut-resume, .theme-toggle"
     );
     const onMagneticMove = (event) => {
       const el = event.currentTarget;
@@ -608,14 +612,6 @@ const CinematicPortfolio = () => {
               DATA.
             </h1>
 
-            <p className="hero-statement">
-              I am Govind Gupta — a Data Engineer turning raw business
-              requirements into governed <b>Databricks</b> pipelines,{" "}
-              <b>Spark SQL</b> datamarts, and dependable{" "}
-              <b>Azure</b> data systems, backed by strong{" "}
-              <b>Java Spring Boot</b> API depth.
-            </p>
-
             <div className="hero-actions">
               <a href="#work" className="brut-button is-solid">
                 View Work <b>↓</b>
@@ -627,6 +623,14 @@ const CinematicPortfolio = () => {
                 Get in Touch <b>→</b>
               </a>
             </div>
+
+            <p className="hero-statement">
+              I am Govind Gupta — a Data Engineer turning raw business
+              requirements into governed <b>Databricks</b> pipelines,{" "}
+              <b>Spark SQL</b> datamarts, and dependable{" "}
+              <b>Azure</b> data systems, backed by strong{" "}
+              <b>Java Spring Boot</b> API depth.
+            </p>
           </div>
         </section>
 
@@ -797,40 +801,32 @@ const CinematicPortfolio = () => {
                     ))}
                   </div>
                   <div className="project-cta">
-                    <div className="project-links">
-                      {project.source_code_link ? (
-                        <a
-                          href={project.source_code_link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Code ↗
-                        </a>
-                      ) : null}
-                      {project.live_demo_link ? (
-                        <a
-                          href={project.live_demo_link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Live ↗
-                        </a>
-                      ) : null}
-                    </div>
-                    {project.source_code_link ? (
-                      <a
-                        className="project-arrow"
-                        href={project.source_code_link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Open ${project.name} source code`}
-                      >
-                        <i
-                          className="ri-arrow-right-up-line"
-                          aria-hidden="true"
-                        />
-                      </a>
-                    ) : null}
+                    {project.inProgress && !project.source_code_link ? (
+                      <span className="project-wip">
+                        In Progress — Case Study Soon
+                      </span>
+                    ) : (
+                      <div className="project-links">
+                        {project.source_code_link ? (
+                          <a
+                            href={project.source_code_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Code ↗
+                          </a>
+                        ) : null}
+                        {project.live_demo_link ? (
+                          <a
+                            href={project.live_demo_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Live ↗
+                          </a>
+                        ) : null}
+                      </div>
+                    )}
                   </div>
                 </div>
               </article>
