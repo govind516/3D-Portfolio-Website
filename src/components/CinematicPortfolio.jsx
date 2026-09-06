@@ -29,7 +29,7 @@ const bootLines = [
 const projectTypes = [
   "AI Backend Service",
   "Event-Driven Backend",
-  "Quiz API Platform",
+  "Full-Stack Quiz Platform",
   "ML Data Product",
   "Predictive Data Model",
   "Open Library Search App",

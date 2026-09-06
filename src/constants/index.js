@@ -123,23 +123,27 @@ const projects = [
 
   },
   {
-    name: "Quiz App Backend",
+    name: "HexQuiz",
     description:
-      "Quiz CRUD, scoring and result APIs on Spring Boot + PostgreSQL.",
+      "Full-stack IT quiz platform with live multiplayer, Redis leaderboards and Gemini AI generation.",
     tags: [
       {
-        name: "Java",
-        
+        name: "Next.js 16",
       },
       {
         name: "Spring Boot",
-        
       },
       {
-        name: "PostgreSQL"
+        name: "PostgreSQL",
       },
       {
-        name: "Postman"
+        name: "Redis",
+      },
+      {
+        name: "Gemini AI",
+      },
+      {
+        name: "STOMP/WebSocket",
       },
     ],
     source_code_link: "https://github.com/govind516/Quiz-App/",
@@ -147,7 +151,7 @@ const projects = [
     imageWidth: 1008,
     imageHeight: 720,
     imageAlt:
-      "Screenshot of the Quiz API platform showing quiz creation and result generation endpoints",
+      "HexQuiz IT quiz platform — live arenas, timed attempts, leaderboards and verifiable certificates",
   },
   {
     name: "Movie Recommender",
