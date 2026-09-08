@@ -147,6 +147,7 @@ const projects = [
       },
     ],
     source_code_link: "https://github.com/govind516/Quiz-App/",
+    live_demo_link: "https://quiz-app-gamma-ten-37.vercel.app/",
     image: quizApiVisual,
     imageWidth: 1008,
     imageHeight: 720,
